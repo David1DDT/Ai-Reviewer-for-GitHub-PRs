@@ -20,7 +20,6 @@ userRoute.get("/repos", auth, async (req: Request, res: Response) => {
         headers: {
             Authorization: `token ${user?.accessToken}`,          // user token
             Accept: "application/vnd.github+json",              // GitHub API version
-            "User-Agent": "My-GitHub-App",                      // optional
             "X-GitHub-Client-Id": process.env.GITHUB_CLIENT_ID!,      // from env
             "X-GitHub-Client-Secret": process.env.GITHUB_CLIENT_SECRET! // from env
         }
