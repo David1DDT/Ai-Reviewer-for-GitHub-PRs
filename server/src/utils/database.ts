@@ -1,3 +1,5 @@
+import dotenv from "dotenv"
+dotenv.config()
 import mongoose, { mongo } from "mongoose"
 
 const DB_URI = process.env.DB_URI || "mongodb://127.0.0.1:27017/pr-review?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.5.10"

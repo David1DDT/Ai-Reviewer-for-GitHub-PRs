@@ -6,7 +6,7 @@ import Image from "next/image";
 export default async function Header() {
     const cookieStore = await cookies();
     const cookieHeader = cookieStore.toString();
-    const currentUserRes = await fetch("http://127.0.0.1:4000/login/oauth2/code/me", {
+    const currentUserRes = await fetch("http://46.183.113.13/api/login/oauth2/code/me", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -38,7 +38,7 @@ export default async function Header() {
                                 height={40}
                                 className="rounded-full"
                             />
-                            <Link href="http://127.0.0.1:4000/login/oauth2/code/logout">
+                            <Link href="http://46.183.113.13/api/login/oauth2/code/logout">
                                 <button className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition">
                                     <LogOut className="w-4 h-4" />
                                     Logout

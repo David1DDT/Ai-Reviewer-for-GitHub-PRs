@@ -18,7 +18,7 @@ export default async function DashboardPage() {
     const cookieHeader = cookieStore.toString();
 
     // Fetch repos from your backend (pulls_url is already cleaned)
-    const reposRes = await fetch("http://127.0.0.1:4000/login/oauth2/code/repos", {
+    const reposRes = await fetch("http://46.183.113.13/api/login/oauth2/code/repos", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
