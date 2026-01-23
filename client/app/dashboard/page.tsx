@@ -16,19 +16,17 @@ type Repo = {
 export default async function DashboardPage() {
     const cookieStore = await cookies();
     const cookieHeader = cookieStore.toString();
+    const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://46.183.113.13/api";
 
     // Fetch repos from your backend (pulls_url is already cleaned)
-    const reposRes = await fetch("http://46.183.113.13/api/login/oauth2/code/repos", {
+    const reposRes = await fetch(`${BACKEND_URL}/login/oauth2/code/repos`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
             "Cookie": cookieHeader,
             "Accept": "application/vnd.github.v3+json",
             "User-Agent": "Reviewer for GitHub PRs",
-
-
         },
-
     });
 
     const repos: Repo[] = await reposRes.json();

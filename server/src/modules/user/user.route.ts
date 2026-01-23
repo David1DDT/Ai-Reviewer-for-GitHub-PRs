@@ -7,10 +7,19 @@ const userRoute = Router()
 userRoute.get("/github", githubRedirect)
 userRoute.get("/github/callback", githubCallback)
 userRoute.get("/me", auth, async (req, res) => {
-    const userId = (req as any).user.userId; // <- from JWT payload
-    const user = await userModel.findById(userId)
-    if (!user) return res.status(404).json({ error: "User not found" });
-    res.json({ user });
+    try {
+        const userId = (req as any).user.userId; // <- from JWT payload
+        const user = await userModel.findById(userId)
+        if (!user) {
+            console.error("User not found for ID:", userId)
+            return res.status(404).json({ error: "User not found" });
+        }
+        console.log("User authenticated:", user.username)
+        res.json({ user });
+    } catch (error) {
+        console.error("Error in /me:", error)
+        res.status(500).json({ error: "Internal server error" })
+    }
 });
 
 userRoute.get("/repos", auth, async (req: Request, res: Response) => {

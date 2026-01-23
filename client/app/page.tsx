@@ -6,7 +6,9 @@ import { cookies } from "next/headers";
 export default async function HomePage() {
   const cookieStore = await cookies();
   const cookieHeader = cookieStore.toString();
-  const currentUserRes = await fetch("http://46.183.113.13/api/login/oauth2/code/me", {
+  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://46.183.113.13/api";
+
+  const currentUserRes = await fetch(`${BACKEND_URL}/login/oauth2/code/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

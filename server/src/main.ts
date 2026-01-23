@@ -9,10 +9,15 @@ import { prRoute } from './modules/pullRequest/pullRequest.route';
 dotenv.config()
 const app = express()
 
+const FRONTEND_ORIGIN = process.env.FRONTEND_ORIGIN || "http://46.183.113.13";
+
 app.use(cors(
     {
-        origin: "http://46.183.113.13/", // ✅ your frontend origin
+        origin: FRONTEND_ORIGIN.replace(/\/$/, ""), // Remove trailing slash
         credentials: true,               // ✅ allow cookies
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"],
+        optionsSuccessStatus: 200,
     }
 ))
 app.use(express.json())

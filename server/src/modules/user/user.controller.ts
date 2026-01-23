@@ -62,16 +62,21 @@ export const githubCallback = async (req: Request, res: Response) => {
         { expiresIn: "7d" }
     );
 
+    const frontendUrl = process.env.FRONTEND_ORIGIN || "http://46.183.113.13";
+
+    console.log("✅ User authenticated:", user.username);
+    console.log("✅ Setting cookie with sameSite=lax, secure=false (HTTP)");
+    console.log("✅ Redirecting to:", `${frontendUrl}/dashboard`);
+
     res
         .cookie("accessToken", token, {
-            httpOnly: true, // JS can’t access it
-            secure: process.env.NODE_ENV === "production", // false for localhost
-            sameSite: "lax",
-            domain: "46.183.113.13", // set to your root domain
+            httpOnly: true, // JS can't access it
+            secure: false, // HTTP only (no HTTPS)
+            sameSite: "lax", // Works with HTTP
             path: "/",
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         })
-        .redirect("http://46.183.113.13/dashboard")
+        .redirect(`${frontendUrl}/dashboard`)
 
 }
 
@@ -79,11 +84,11 @@ export const logout = (req: Request, res: Response) => {
     // Clear the cookie
     res.clearCookie("accessToken", {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production", // only send over HTTPS in production
-        sameSite: "lax",
-        domain: "46.183.113.13", // set to your root domain
+        secure: false, // HTTP only (no HTTPS)
+        sameSite: "lax", // Match the set cookie settings
         path: "/", // make sure path matches cookie path
     });
 
-    res.redirect("http://46.183.113.13/")
+    const frontendUrl = process.env.FRONTEND_ORIGIN || "http://46.183.113.13";
+    res.redirect(frontendUrl)
 }
