@@ -11,7 +11,7 @@ const app = express()
 
 app.use(cors(
     {
-        origin: "http://127.0.0.1:3000", // ✅ your frontend origin
+        origin: "http://46.183.113.13/", // ✅ your frontend origin
         credentials: true,               // ✅ allow cookies
     }
 ))

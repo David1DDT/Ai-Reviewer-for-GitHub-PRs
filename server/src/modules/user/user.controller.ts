@@ -69,7 +69,7 @@ export const githubCallback = async (req: Request, res: Response) => {
             sameSite: "lax",
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         })
-        .redirect("http://127.0.0.1:3000/dashboard")
+        .redirect("http://46.183.113.13/api/dashboard")
 
 }
 
@@ -82,5 +82,5 @@ export const logout = (req: Request, res: Response) => {
         path: "/", // make sure path matches cookie path
     });
 
-    res.redirect("http://127.0.0.1:3000")
+    res.redirect("http://46.183.113.13/")
 }
