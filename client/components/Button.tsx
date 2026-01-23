@@ -4,7 +4,7 @@ import { GitPullRequest, Sparkles } from "lucide-react";
 
 const Button = ({ link }: { link: string }) => {
     const prHandler = async (link: string) => {
-        const prRes = await fetch("http://127.0.0.1:4000/pullRequest/prs", {
+        const prRes = await fetch("http://46.183.113.13/api/pullRequest/prs", {
             method: "post",
             headers: {
                 "Content-Type": "application/json",

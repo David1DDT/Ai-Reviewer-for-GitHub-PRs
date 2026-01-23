@@ -67,9 +67,11 @@ export const githubCallback = async (req: Request, res: Response) => {
             httpOnly: true, // JS can’t access it
             secure: process.env.NODE_ENV === "production", // false for localhost
             sameSite: "lax",
+            domain: "46.183.113.13", // set to your root domain
+            path: "/",
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         })
-        .redirect("http://46.183.113.13/api/dashboard")
+        .redirect("http://46.183.113.13/dashboard")
 
 }
 
@@ -78,7 +80,8 @@ export const logout = (req: Request, res: Response) => {
     res.clearCookie("accessToken", {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production", // only send over HTTPS in production
-        sameSite: "strict",
+        sameSite: "lax",
+        domain: "46.183.113.13", // set to your root domain
         path: "/", // make sure path matches cookie path
     });
 
