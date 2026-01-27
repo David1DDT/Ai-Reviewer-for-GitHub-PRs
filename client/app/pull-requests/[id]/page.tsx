@@ -118,7 +118,7 @@ export default function PrReviewPage() {
                     <div className="mt-4 text-sm text-gray-500">
                         Confidence Score:{" "}
                         <span className="font-semibold text-gray-900">
-                            {Math.round((review?.confidence_score ?? 0) * 100)}%
+                            {review?.confidence_score ?? 0}%
 
                         </span>
                     </div>

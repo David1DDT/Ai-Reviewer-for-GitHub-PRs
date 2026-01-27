@@ -19,6 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google/genai": "^1.38.0",
     "@typegoose/typegoose": "^13.0.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
