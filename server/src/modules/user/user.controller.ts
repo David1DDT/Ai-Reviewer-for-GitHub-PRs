@@ -71,7 +71,7 @@ export const githubCallback = async (req: Request, res: Response) => {
     res
         .cookie("accessToken", token, {
             httpOnly: true, // JS can't access it
-            secure: false, // HTTP only (no HTTPS)
+            secure: true, // HTTP only (no HTTPS)
             sameSite: "lax", // Works with HTTP
             path: "/",
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
@@ -84,7 +84,7 @@ export const logout = (req: Request, res: Response) => {
     // Clear the cookie
     res.clearCookie("accessToken", {
         httpOnly: true,
-        secure: false, // HTTP only (no HTTPS)
+        secure: true, // HTTP only (no HTTPS)
         sameSite: "lax", // Match the set cookie settings
         path: "/", // make sure path matches cookie path
     });
