@@ -12,7 +12,7 @@ const login = () => {
                 <p className="text-white/80 mb-8">
                     Sign in to review GitHub pull requests
                 </p>
-                <Link href="http://46.183.113.13/api/login/oauth2/code/github">
+                <Link href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/login/oauth2/code/github`}>
 
                     <button
                         className="w-full flex items-center justify-center gap-3 bg-black hover:bg-gray-900 transition text-white py-4 rounded-xl font-semibold text-lg shadow-lg"

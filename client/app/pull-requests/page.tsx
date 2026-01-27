@@ -10,7 +10,7 @@ const pullRequests = async ({ searchParams }: { searchParams: Promise<{ link: st
 
     console.log(link)
 
-    const prRes = await fetch("http://46.183.113.13/api/pullRequest/prs", {
+    const prRes = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/pullRequest/prs`, {
         method: "post",
         headers: {
             "Content-Type": "application/json",

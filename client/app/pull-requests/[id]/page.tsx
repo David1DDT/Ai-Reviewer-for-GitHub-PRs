@@ -21,7 +21,7 @@ export default function PrReviewPage() {
             return
         }
 
-        fetch("http://46.183.113.13/api/pullRequest/review", {
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/pullRequest/review`, {
             method: "POST",
             credentials: "include",
             headers: {
